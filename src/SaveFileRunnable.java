@@ -24,7 +24,6 @@ public class SaveFileRunnable implements Runnable {
 
 	public void run() {
 		String line;
-		int reqHeadSize = 0;
 		int contentLen = 0;
 		FileOutputStream fos = null;
 		PrintWriter socketWriter = null;
@@ -37,16 +36,13 @@ public class SaveFileRunnable implements Runnable {
 			int tempIndex;
 			String key;
 			String value;
-			if (firstLine.length == 3 && "POST".equals(firstLine[0])
-					&& "HTTP/1.1".equals(firstLine[2])) { // for testing keep 1.1 check
+			if (firstLine.length == 3 && "POST".equals(firstLine[0])) { 
 				while ((line = in.readLine()) != null) {
 					//break when body starts
 					if ("".equals(line)) {
-						reqHeadSize = reqHeadSize + 1;
 						break; 
 					} else {
 						//parse headers for body size
-						reqHeadSize = reqHeadSize + line.length() + 1;
 						tempIndex = line.indexOf(HEADER_SEPARATOR);
 						key = line.substring(0, tempIndex);
 						value = line.substring(tempIndex + 1).trim();
