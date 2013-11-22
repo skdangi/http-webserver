@@ -17,8 +17,8 @@ This command starts a simple HTTP server that listens on port 9080 and writes up
 The uploaded file should be identical to the original.
 
 - ## Send http request to upload a file  
-$curl -v --request POST --data-binary @Death.mp3 http://localhost:9080
+$curl -v --request POST --data-binary @Death.mp3 http://localhost:9080/Death.mp3
 
 - ## Check if the file stored is same as you sent.  
-$diff original.mp3 /tmp/test.mp3
+$diff Death.mp3 /tmp/Death.mp3
 
